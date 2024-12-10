@@ -1,0 +1,184 @@
+/* Estilo geral */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #128503; /* Verde típico de feltro de mesas de cassino */
+    color: #fff; /* Texto branco para contraste */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Contêiner principal */
+main {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto com transparência */
+    border: 2px solid #ff0000; /* Bordas vermelhas vibrantes */
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
+    max-width: 900px;
+    width: 90%;
+}
+
+/* Título e subtítulo */
+.title h1 {
+    font-size: 3rem;
+    color: #ffd700; /* Amarelo ouro */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Destaque */
+}
+
+.sub-title h4 {
+    font-size: 1.2rem;
+    color: #ffcc00; /* Amarelo mais claro */
+    margin-top: 10px;
+}
+
+/* Contêiner de contadores */
+.counter-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Cada contador */
+.counter {
+    flex: 1;
+    background-color: #000; /* Preto */
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px solid #ff0000; /* Bordas vermelhas */
+    color: #ffd700; /* Texto amarelo */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+.counter h1 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(255, 0, 0, 0.8); /* Sombra vermelha */
+}
+
+.counter .value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffd700; /* Amarelo ouro */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Botões */
+.counter button {
+    background-color: #ff0000; /* Vermelho vibrante */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+.counter button:hover {
+    background-color: #ffd700; /* Amarelo ouro no hover */
+    color: #000;
+    transform: scale(1.1); /* Efeito de aumento */
+}
+
+.counter button:active {
+    transform: scale(0.9); /* Reduz ao clicar */
+}
+
+/* Bolinhas */
+.bolinhas {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.bola {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ccc; /* Cinza para não preenchido */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.bola.filled {
+    background-color: #ff0000; /* Vermelho preenchido */
+}
+
+/* Link das regras */
+.regras {
+    margin-top: 20px;
+}
+
+.regras a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #ffd700; /* Amarelo ouro */
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.regras a:hover {
+    color: #ff4500; /* Vermelho alaranjado */
+}
+
+/* Rodapé */
+footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #ffd700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+    .counter-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .counter {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .title h1 {
+        font-size: 2.5rem;
+    }
+
+    .sub-title h4 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title h1 {
+        font-size: 2rem;
+    }
+
+    .sub-title h4 {
+        font-size: 0.9rem;
+    }
+
+    .counter button {
+        font-size: 1.3rem;
+        width: 50px;
+        height: 50px;
+    }
+
+    .counter .value {
+        font-size: 2rem;
+    }
+
+    .bolinhas {
+        gap: 3px;
+    }
+}
