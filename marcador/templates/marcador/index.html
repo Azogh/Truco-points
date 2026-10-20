@@ -4,68 +4,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcador de Truco Cego - CBTG</title>
     <link rel="stylesheet" href="{% static 'marcador/css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Pontos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" crossorigin="anonymous" />
 </head>
 <body>
     <main>
-        <div class="content">
-            <div class="title">
-                <h1>Contador de Pontos</h1>
+        <!-- Topo da Mesa -->
+        <div class="header-actions">
+            <div class="title-group">
+                <div class="title">
+                    <h1>Truco Cego</h1>
+                </div>
+                <div class="sub-title">Marcador Fronteiriço & Campeiro</div>
             </div>
-            <div class="sub-title">
-                <h4>Marcador de pontos mais bagual da internet</h4>
-            </div>
+            <button class="btn-regras" onclick="toggleModal(true)">
+                <i class="fa-solid fa-book"></i> Regras CBTG
+            </button>
         </div>
         
+        <!-- Área dos Contadores -->
         <div class="counter-container">
-            <div class="counter" id="Nos"> 
-                <h1>NÓS</h1>
-                <div class="bolinhas">
-                    <span class="bola" id="nos-bola1"></span>
-                    <span class="bola" id="nos-bola2"></span>
-                    <span class="bola" id="nos-bola3"></span>
+            <!-- Time Nós -->
+            <div class="counter" id="nos-card"> 
+                <input type="text" id="nos-name" class="team-name" value="NÓS" onchange="saveState()" />
+                
+                <div class="tentos-status">
+                    <span id="nos-malos-badge" class="fase-badge active">MALOS (0-12)</span>
+                    <span id="nos-buenas-badge" class="fase-badge">BUENOS (13-24)</span>
                 </div>
-                <button onclick="onIncrement('Nos')" aria-label="Adicionar ponto para Nós">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-                <span class="value" id="nos-value">0</span>
-                <button onclick="onDecrement('Nos')" aria-label="Remover ponto para Nós">
-                    <i class="fa-solid fa-minus"></i>
-                </button>
+
+                <div class="value-display" id="nos-value">0</div>
+
+                <div class="main-controls">
+                    <button class="btn-circle" onclick="addPoints('nos', -1)" aria-label="Remover ponto">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <button class="btn-circle" onclick="addPoints('nos', 1)" aria-label="Adicionar ponto">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <!-- Atalhos Campeiros -->
+                <div class="quick-buttons">
+                    <button class="btn-quick" onclick="addPoints('nos', 2)">Truco (+2)</button>
+                    <button class="btn-quick" onclick="addPoints('nos', 3)">Retruco (+3)</button>
+                    <button class="btn-quick" onclick="addPoints('nos', 4)">Vale 4 (+4)</button>
+                    <button class="btn-quick" onclick="addPoints('nos', 3)">Flor (+3)</button>
+                    <button class="btn-quick" onclick="addPoints('nos', 2)">Envido (+2)</button>
+                    <button class="btn-quick" onclick="addPoints('nos', 3)">R. Envido (+3)</button>
+                </div>
             </div>
             
-            <div class="counter" id="Eles">
-                <h1>ELES</h1>
-                <div class="bolinhas">
-                    <span class="bola" id="eles-bola1"></span>
-                    <span class="bola" id="eles-bola2"></span>
-                    <span class="bola" id="eles-bola3"></span>
+            <!-- Time Eles -->
+            <div class="counter" id="eles-card">
+                <input type="text" id="eles-name" class="team-name" value="ELES" onchange="saveState()" />
+                
+                <div class="tentos-status">
+                    <span id="eles-malos-badge" class="fase-badge active">MALOS (0-12)</span>
+                    <span id="eles-buenas-badge" class="fase-badge">BUENOS (13-24)</span>
                 </div>
-                <button onclick="onIncrement('Eles')" aria-label="Adicionar ponto para Eles">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-                <span class="value" id="eles-value">0</span>
-                <button onclick="onDecrement('Eles')" aria-label="Remover ponto para Eles">
-                    <i class="fa-solid fa-minus"></i>
-                </button>
+
+                <div class="value-display" id="eles-value">0</div>
+
+                <div class="main-controls">
+                    <button class="btn-circle" onclick="addPoints('eles', -1)" aria-label="Remover ponto">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <button class="btn-circle" onclick="addPoints('eles', 1)" aria-label="Adicionar ponto">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <!-- Atalhos Campeiros -->
+                <div class="quick-buttons">
+                    <button class="btn-quick" onclick="addPoints('eles', 2)">Truco (+2)</button>
+                    <button class="btn-quick" onclick="addPoints('eles', 3)">Retruco (+3)</button>
+                    <button class="btn-quick" onclick="addPoints('eles', 4)">Vale 4 (+4)</button>
+                    <button class="btn-quick" onclick="addPoints('eles', 3)">Flor (+3)</button>
+                    <button class="btn-quick" onclick="addPoints('eles', 2)">Envido (+2)</button>
+                    <button class="btn-quick" onclick="addPoints('eles', 3)">R. Envido (+3)</button>
+                </div>
             </div>
         </div>
-        
-        <br>
 
-        <div class="regras">
-            <a href="{% url 'regras' %}" target="_blank" aria-label="Regras do Truco">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Acesse as regras do jogo
-            </a>
+        <!-- Ações do Rodapé -->
+        <div class="footer-actions">
+            <button class="btn-reset" onclick="resetGame()">
+                <i class="fa-solid fa-rotate-left"></i> Zerar Partida
+            </button>
+            <p style="font-size: 0.85rem; color: #8b5a2b;">Partida de 24 Tentos • Regra Oficial CBTG</p>
         </div>
-        
-        <footer>
-            <p>Desenvolvido por Azogh. &copy; 2024</p>
-        </footer>
     </main>
-    
+
+    <!-- Modal Dinâmico de Regras -->
+    <div class="modal" id="regrasModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="color: #ffd700;"><i class="fa-solid fa-book-open"></i> Regulamento Truco Cego</h3>
+                <button class="close-modal" onclick="toggleModal(false)">&times;</button>
+            </div>
+            
+            <div class="modal-tabs">
+                <button class="tab-btn active" id="btn-tab-guia" onclick="switchTab('guia')">Como Jogar & Hierarquia</button>
+                <button class="tab-btn" id="btn-tab-cbtg" onclick="switchTab('cbtg')">Regulamento CBTG</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Aba 1: Guia Rápido -->
+                <div id="tab-guia">
+                    <h4>Hierarquia das Cartas (Baralho Espanhol)</h4>
+                    <p style="font-size:0.85rem; color:#aaa;">Do maior valor para o menor valor:</p>
+                    <div class="card-rank">
+                        <div class="card-item"><strong>1. Espadão</strong><br><small>1 de Espadas</small></div>
+                        <div class="card-item"><strong>2. Bastonete</strong><br><small>1 de Bastos</small></div>
+                        <div class="card-item"><strong>3. 7 de Espadas</strong></div>
+                        <div class="card-item"><strong>4. 7 de Ouro</strong></div>
+                        <div class="card-item"><strong>5. Todos os 3s</strong></div>
+                        <div class="card-item"><strong>6. Todos os 2s</strong></div>
+                        <div class="card-item"><strong>7. Ases Falsos</strong><br><small>1 de Copas / Ouro</small></div>
+                        <div class="card-item"><strong>8. Reis (12)</strong></div>
+                        <div class="card-item"><strong>9. Cavalos (11)</strong></div>
+                        <div class="card-item"><strong>10. Sotas (10)</strong></div>
+                        <div class="card-item"><strong>11. Setes Falsos</strong><br><small>7 de Copas / Bastos</small></div>
+                        <div class="card-item"><strong>12. 6s, 5s e 4s</strong></div>
+                    </div>
+                    
+                    <h4 style="margin-top:20px;">Cálculo do Envido e Flor</h4>
+                    <p><strong>Envido:</strong> 2 cartas do mesmo naipe = soma do valor das cartas + 20. Negras (10, 11, 12) valem 0.</p>
+                    <p><strong>Flor:</strong> 3 cartas do mesmo naipe = soma do valor das 3 cartas + 20 (vale 3 tentos).</p>
+                </div>
+
+                <!-- Aba 2: Artigos CBTG com Busca -->
+                <div id="tab-cbtg" style="display: none;">
+                    <input type="text" class="search-box" id="searchRules" placeholder="Buscar no regulamento (ex: emparde, flor, testa)..." onkeyup="filterRules()" />
+                    <div id="rulesList">
+                        <article class="rule-item">
+                            <h5>Art. 9º - Tentos</h5>
+                            <p>As partidas são jogadas em 24 tentos, sendo os primeiros 12 os "MALOS" e os 12 restantes os "BUENOS".</p>
+                        </article>
+                        <article class="rule-item">
+                            <h5>Art. 9º - Vaza Empatada (Emparde)</h5>
+                            <p>Empatando a primeira vaza, ganha quem fizer a segunda. Empatando primeira e segunda, ganha a terceira. Empatando a terceira, ganha quem fez a primeira. Empatando as três, ganha o mão.</p>
+                        </article>
+                        <article class="rule-item">
+                            <h5>Art. 10º - Penalidade de Flor</h5>
+                            <p>Aquele que cantar FLOR sem possuí-la perde 4 tentos (3 da flor e 1 do truco não jogado).</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="{% static 'marcador/js/script.js' %}"></script>
 </body>
 </html>
