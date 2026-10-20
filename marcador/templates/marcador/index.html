@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="{% static 'marcador/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Pontos</title>
 </head>
@@ -19,7 +20,6 @@
         </div>
         
         <div class="counter-container">
-            
             <div class="counter" id="Nos"> 
                 <h1>NÓS</h1>
                 <div class="bolinhas">
@@ -36,7 +36,6 @@
                 </button>
             </div>
             
-            <!-- Marcador de "Eles" -->
             <div class="counter" id="Eles">
                 <h1>ELES</h1>
                 <div class="bolinhas">
@@ -56,20 +55,17 @@
         
         <br>
 
-        <!-- Link para as regras -->
         <div class="regras">
-            <a href="src/regras.html" target="_blank" aria-label="Regras do Truco">
+            <a href="{% url 'regras' %}" target="_blank" aria-label="Regras do Truco">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Acesse as regras do jogo
             </a>
         </div>
         
-        <!-- Rodapé -->
         <footer>
             <p>Desenvolvido por Azogh. &copy; 2024</p>
         </footer>
-        
     </main>
     
-    <script src="src/js/script.js"></script>
+    <script src="{% static 'marcador/js/script.js' %}"></script>
 </body>
 </html>
