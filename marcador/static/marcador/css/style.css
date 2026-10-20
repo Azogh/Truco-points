@@ -1,4 +1,4 @@
-/* Estilo Geral - Mesa de Madeira Rústica */
+/* Estilo Geral - Mesa de Madeira Rústica com CSS Puro */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,9 +7,21 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: radial-gradient(circle, #3d2314 0%, #1a0f08 100%),
-                url('https://www.transparenttextures.com/patterns/wood-pattern.png');
-    background-color: #2b1810;
+    /* Fundo de Madeira em CSS Puro com Vetas/Ranhuras */
+    background-color: #24140b;
+    background-image: 
+        /* Efeito de iluminação central da mesa */
+        radial-gradient(circle at 50% 50%, rgba(230, 184, 0, 0.08) 0%, rgba(0, 0, 0, 0.6) 90%),
+        /* Vetas e ranhuras de madeira geradas via SVG Inline */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 0.15' numOctaves='3' result='noise'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"),
+        /* Linhas simulando tábuas de madeira na vertical */
+        repeating-linear-gradient(90deg, 
+            #1b0d07 0px, 
+            #2c170d 4px, 
+            #23120a 40px, 
+            #1b0d07 42px
+        );
+    background-size: cover, auto, auto;
     color: #f4e8c1;
     min-height: 100vh;
     display: flex;
@@ -18,14 +30,23 @@ body {
     padding: 15px;
 }
 
+/* Moldura e Tampo da Mesa */
 main {
     width: 100%;
     max-width: 950px;
-    background: rgba(35, 20, 12, 0.92);
-    border: 4px solid #8b5a2b;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,0.5);
-    padding: 20px;
+    background-color: #1e1008;
+    background-image: 
+        /* Textura interna da mesa */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 800 800'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05 0.2' numOctaves='2' result='noise'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, #28160c 0%, #170b05 100%);
+    /* Borda imitando moldura de madeira bisotada */
+    border: 8px solid #4a2815;
+    border-radius: 20px;
+    box-shadow: 
+        0 0 0 2px #120703,
+        0 15px 35px rgba(0, 0, 0, 0.9),
+        inset 0 0 25px rgba(0, 0, 0, 0.8);
+    padding: 25px;
     text-align: center;
 }
 
@@ -34,15 +55,15 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #5c3a1e;
-    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3d2111;
+    padding-bottom: 12px;
 }
 
 .title h1 {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     color: #e6b800;
-    text-shadow: 2px 2px 4px #000;
+    text-shadow: 2px 2px 4px #000, 0 0 10px rgba(230, 184, 0, 0.2);
     font-family: 'Georgia', serif;
 }
 
@@ -53,19 +74,20 @@ main {
 }
 
 .btn-regras {
-    background: #8b0000;
+    background: linear-gradient(180deg, #990000 0%, #660000 100%);
     color: #ffd700;
     border: 1px solid #d4af37;
-    padding: 8px 16px;
+    padding: 10px 18px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
     transition: 0.2s;
 }
 
 .btn-regras:hover {
-    background: #a00000;
-    transform: scale(1.05);
+    background: linear-gradient(180deg, #b30000 0%, #800000 100%);
+    transform: translateY(-2px);
 }
 
 /* Contêiner dos Placares */
@@ -77,23 +99,23 @@ main {
 }
 
 .counter {
-    background: #1f120b;
-    border: 2px solid #5c3a1e;
+    background: #140a05;
+    border: 2px solid #3d2111;
     border-radius: 12px;
-    padding: 15px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.7);
+    padding: 18px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.9), 0 4px 8px rgba(0,0,0,0.4);
 }
 
 .team-name {
     background: transparent;
     border: none;
-    border-bottom: 2px dashed #8b5a2b;
+    border-bottom: 2px dashed #6b3b1e;
     color: #e6b800;
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: bold;
     text-align: center;
     width: 90%;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     font-family: 'Georgia', serif;
 }
 
@@ -106,30 +128,31 @@ main {
 .tentos-status {
     display: flex;
     justify-content: space-around;
-    margin: 10px 0;
+    margin: 12px 0;
     font-size: 0.85rem;
     font-weight: bold;
 }
 
 .fase-badge {
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 12px;
-    background: #331d11;
-    color: #888;
-    border: 1px solid #442717;
+    background: #221209;
+    color: #777;
+    border: 1px solid #331b0d;
 }
 
 .fase-badge.active {
-    background: #8b0000;
+    background: linear-gradient(180deg, #8b0000 0%, #550000 100%);
     color: #ffd700;
     border-color: #ffd700;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
 }
 
 .value-display {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     font-weight: bold;
     color: #fff;
-    text-shadow: 2px 2px 5px #000;
+    text-shadow: 2px 2px 6px #000;
     margin: 10px 0;
 }
 
@@ -142,45 +165,48 @@ main {
 }
 
 .btn-circle {
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    border: 2px solid #8b5a2b;
-    background: #3d2314;
+    border: 2px solid #6b3b1e;
+    background: linear-gradient(180deg, #3d2111 0%, #24130a 100%);
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.6);
     transition: 0.2s;
 }
 
 .btn-circle:hover {
-    background: #5c3a1e;
     border-color: #ffd700;
+    transform: scale(1.08);
 }
 
 /* Atalhos Campeiros (Truco, Flor, Envido) */
 .quick-buttons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    margin-top: 10px;
+    gap: 8px;
+    margin-top: 12px;
 }
 
 .btn-quick {
-    background: #2b1810;
-    border: 1px solid #5c3a1e;
+    background: linear-gradient(180deg, #2b170c 0%, #1a0d07 100%);
+    border: 1px solid #4a2815;
     color: #d4af37;
-    padding: 6px;
-    font-size: 0.8rem;
-    border-radius: 4px;
+    padding: 8px 4px;
+    font-size: 0.82rem;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
     transition: 0.2s;
 }
 
 .btn-quick:hover {
-    background: #8b5a2b;
+    background: #6b3b1e;
     color: #fff;
+    border-color: #ffd700;
 }
 
 /* Rodapé e Ações Auxiliares */
@@ -189,15 +215,15 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #442717;
+    border-top: 1px solid #3d2111;
     padding-top: 15px;
 }
 
 .btn-reset {
-    background: #4a0d0d;
+    background: linear-gradient(180deg, #4a0d0d 0%, #2b0707 100%);
     color: #ccc;
     border: 1px solid #661a1a;
-    padding: 8px 15px;
+    padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -213,18 +239,18 @@ main {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.88);
     z-index: 1000;
     justify-content: center;
     align-items: center;
 }
 
 .modal-content {
-    background: #1f120b;
-    border: 3px solid #8b5a2b;
-    width: 90%;
-    max-width: 800px;
-    max-height: 85vh;
+    background: #170c06;
+    border: 3px solid #6b3b1e;
+    width: 92%;
+    max-width: 850px;
+    max-height: 88vh;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -233,8 +259,8 @@ main {
 
 .modal-header {
     padding: 15px;
-    background: #2b1810;
-    border-bottom: 2px solid #5c3a1e;
+    background: #24130a;
+    border-bottom: 2px solid #3d2111;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -244,14 +270,14 @@ main {
     background: none;
     border: none;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     cursor: pointer;
 }
 
 .modal-tabs {
     display: flex;
-    background: #150b07;
-    border-bottom: 1px solid #331d11;
+    background: #0f0703;
+    border-bottom: 1px solid #2b170c;
 }
 
 .tab-btn {
@@ -267,7 +293,7 @@ main {
 .tab-btn.active {
     color: #ffd700;
     border-bottom: 3px solid #8b0000;
-    background: #1f120b;
+    background: #170c06;
 }
 
 .modal-body {
@@ -276,38 +302,108 @@ main {
     color: #ddd;
     text-align: left;
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .search-box {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    background: #120a06;
-    border: 1px solid #5c3a1e;
+    background: #0d0603;
+    border: 1px solid #3d2111;
     color: #fff;
     border-radius: 5px;
 }
 
-.card-rank {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+/* Estilização da Hierarquia Visual das Cartas */
+.hierarchy-grid {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     margin-top: 15px;
 }
 
-.card-item {
-    background: #2b1810;
-    padding: 10px;
-    border-radius: 6px;
-    border-left: 4px solid #d4af37;
+.rank-row {
+    background: #24130a;
+    border: 1px solid #3d2111;
+    border-radius: 8px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rank-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd700;
+    min-width: 35px;
+}
+
+.rank-details {
+    flex: 1;
+}
+
+.rank-title {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.rank-desc {
+    font-size: 0.85rem;
+    color: #b39b82;
+}
+
+.card-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 5px;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.badge-espadas { background: #1c2833; color: #aeb6bf; }
+.badge-bastos { background: #1e8449; color: #abebc6; }
+.badge-ouro { background: #b7950b; color: #fef9e7; }
+.badge-copas { background: #78281f; color: #fadbd8; }
+
+/* Estilização do Regulamento CBTG */
+.rule-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #2b170c;
+}
+
+.rule-section h4 {
+    color: #e6b800;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.rule-section p {
+    margin-bottom: 8px;
+    color: #ccc;
+}
+
+.rule-section ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.rule-section li {
+    margin-bottom: 4px;
 }
 
 @media (max-width: 768px) {
     .counter-container {
         grid-template-columns: 1fr;
     }
-    .main-controls {
-        gap: 25px;
+    .rank-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
     }
 }

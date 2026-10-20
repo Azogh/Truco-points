@@ -106,51 +106,187 @@
             </div>
             
             <div class="modal-tabs">
-                <button class="tab-btn active" id="btn-tab-guia" onclick="switchTab('guia')">Como Jogar & Hierarquia</button>
-                <button class="tab-btn" id="btn-tab-cbtg" onclick="switchTab('cbtg')">Regulamento CBTG</button>
+                <button class="tab-btn active" id="btn-tab-guia" onclick="switchTab('guia')">Hierarquia & Mão de Cartas</button>
+                <button class="tab-btn" id="btn-tab-cbtg" onclick="switchTab('cbtg')">Regulamento CBTG Completo</button>
             </div>
 
             <div class="modal-body">
-                <!-- Aba 1: Guia Rápido -->
+                <!-- Aba 1: Guia Rápido com Galeria Visual -->
                 <div id="tab-guia">
-                    <h4>Hierarquia das Cartas (Baralho Espanhol)</h4>
-                    <p style="font-size:0.85rem; color:#aaa;">Do maior valor para o menor valor:</p>
-                    <div class="card-rank">
-                        <div class="card-item"><strong>1. Espadão</strong><br><small>1 de Espadas</small></div>
-                        <div class="card-item"><strong>2. Bastonete</strong><br><small>1 de Bastos</small></div>
-                        <div class="card-item"><strong>3. 7 de Espadas</strong></div>
-                        <div class="card-item"><strong>4. 7 de Ouro</strong></div>
-                        <div class="card-item"><strong>5. Todos os 3s</strong></div>
-                        <div class="card-item"><strong>6. Todos os 2s</strong></div>
-                        <div class="card-item"><strong>7. Ases Falsos</strong><br><small>1 de Copas / Ouro</small></div>
-                        <div class="card-item"><strong>8. Reis (12)</strong></div>
-                        <div class="card-item"><strong>9. Cavalos (11)</strong></div>
-                        <div class="card-item"><strong>10. Sotas (10)</strong></div>
-                        <div class="card-item"><strong>11. Setes Falsos</strong><br><small>7 de Copas / Bastos</small></div>
-                        <div class="card-item"><strong>12. 6s, 5s e 4s</strong></div>
-                    </div>
+                    <h4 style="color:#ffd700;">Ordens e Força das Cartas (Baralho Espanhol)</h4>
+                    <p style="font-size:0.85rem; color:#aaa; margin-bottom:10px;">Do maior valor para o menor valor na disputa das vazas:</p>
                     
-                    <h4 style="margin-top:20px;">Cálculo do Envido e Flor</h4>
-                    <p><strong>Envido:</strong> 2 cartas do mesmo naipe = soma do valor das cartas + 20. Negras (10, 11, 12) valem 0.</p>
-                    <p><strong>Flor:</strong> 3 cartas do mesmo naipe = soma do valor das 3 cartas + 20 (vale 3 tentos).</p>
+                    <div class="hierarchy-grid">
+                        <div class="rank-row">
+                            <span class="rank-number">1º</span>
+                            <div class="rank-details">
+                                <div class="rank-title"><span class="card-badge badge-espadas">⚔️ Espadas</span> Ás de Espadas (Espadão)</div>
+                                <div class="rank-desc">A carta mais forte do jogo.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">2º</span>
+                            <div class="rank-details">
+                                <div class="rank-title"><span class="card-badge badge-bastos">🪵 Bastos</span> Ás de Bastos (Pauzinho / Bastonete)</div>
+                                <div class="rank-desc">Segunda maior carta.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">3º</span>
+                            <div class="rank-details">
+                                <div class="rank-title"><span class="card-badge badge-espadas">⚔️ Espadas</span> Sete de Espadas</div>
+                                <div class="rank-desc">Manilha de Espadas.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">4º</span>
+                            <div class="rank-details">
+                                <div class="rank-title"><span class="card-badge badge-ouro">🪙 Ouro</span> Sete de Ouro</div>
+                                <div class="rank-desc">Manilha de Ouro.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">5º</span>
+                            <div class="rank-details">
+                                <div class="rank-title">Todos os 3s</div>
+                                <div class="rank-desc">3 de Espadas, 3 de Bastos, 3 de Copas, 3 de Ouro (Empatados em força).</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">6º</span>
+                            <div class="rank-details">
+                                <div class="rank-title">Todos os 2s</div>
+                                <div class="rank-desc">2 de Espadas, 2 de Bastos, 2 de Copas, 2 de Ouro.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">7º</span>
+                            <div class="rank-details">
+                                <div class="rank-title">Ases Falsos</div>
+                                <div class="rank-desc"><span class="card-badge badge-copas">🍷 Copas</span> 1 de Copas / <span class="card-badge badge-ouro">🪙 Ouro</span> 1 de Ouro.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">8º</span>
+                            <div class="rank-details">
+                                <div class="rank-title">Reis (12)</div>
+                                <div class="rank-desc">Rei de todos os naipes.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">9º</span>
+                            <div class="rank-details">
+                                <div class="rank-title">Cavalos (11)</div>
+                                <div class="rank-desc">Cavalo de todos os naipes.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">10º</span>
+                            <div class="rank-details">
+                                <div class="rank-title">Sotas / Damas (10)</div>
+                                <div class="rank-desc">Sota de todos os naipes.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">11º</span>
+                            <div class="rank-details">
+                                <div class="rank-title">Setes Falsos</div>
+                                <div class="rank-desc"><span class="card-badge badge-copas">🍷 Copas</span> 7 de Copas / <span class="card-badge badge-bastos">🪵 Bastos</span> 7 de Bastos.</div>
+                            </div>
+                        </div>
+
+                        <div class="rank-row">
+                            <span class="rank-number">12º</span>
+                            <div class="rank-details">
+                                <div class="rank-title">Comuns (6s, 5s e 4s)</div>
+                                <div class="rank-desc">Cartas de menor valor na vaza.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top:25px; color:#ffd700;">Cálculo do Envido e Flor</h4>
+                    <div style="background:#2b1810; padding:12px; border-radius:8px; border:1px solid #5c3a1e;">
+                        <p><strong>Flor (3 tentos):</strong> 3 cartas do mesmo naipe. Soma-se o valor das cartas + 20. (Negras 10, 11 e 12 valem 0 para o cômputo).</p>
+                        <p><strong>Envido (2 tentos):</strong> 2 cartas do mesmo naipe. Soma-se o valor das duas cartas + 20. Se não tiver duas do mesmo naipe, canta-se a maior carta branca solta.</p>
+                    </div>
                 </div>
 
-                <!-- Aba 2: Artigos CBTG com Busca -->
+                <!-- Aba 2: Regulamento CBTG na Íntegra -->
                 <div id="tab-cbtg" style="display: none;">
-                    <input type="text" class="search-box" id="searchRules" placeholder="Buscar no regulamento (ex: emparde, flor, testa)..." onkeyup="filterRules()" />
+                    <input type="text" class="search-box" id="searchRules" placeholder="Filtrar no regulamento (ex: art. 9, flor, emparde, testa, lei do jogo)..." onkeyup="filterRules()" />
+                    
                     <div id="rulesList">
-                        <article class="rule-item">
-                            <h5>Art. 9º - Tentos</h5>
-                            <p>As partidas são jogadas em 24 tentos, sendo os primeiros 12 os "MALOS" e os 12 restantes os "BUENOS".</p>
-                        </article>
-                        <article class="rule-item">
-                            <h5>Art. 9º - Vaza Empatada (Emparde)</h5>
-                            <p>Empatando a primeira vaza, ganha quem fizer a segunda. Empatando primeira e segunda, ganha a terceira. Empatando a terceira, ganha quem fez a primeira. Empatando as três, ganha o mão.</p>
-                        </article>
-                        <article class="rule-item">
-                            <h5>Art. 10º - Penalidade de Flor</h5>
-                            <p>Aquele que cantar FLOR sem possuí-la perde 4 tentos (3 da flor e 1 do truco não jogado).</p>
-                        </article>
+                        <section class="rule-section rule-item">
+                            <h4>Art. 1º ao 3º - Finalidade e Organização</h4>
+                            <p><strong>Art. 1º</strong> O Jogo de Truco tem como finalidade um lazer sadio, criar novas amizades e oportunizar a confraternização entre peões e prendas.</p>
+                            <p><strong>Art. 2º</strong> Todos os trios terão um "Capataz", que o representará nos sorteios, será o porta-voz e responsável pelas reivindicações.</p>
+                            <p><strong>Art. 3º</strong> A comissão organizadora pode designar um "juiz" para o jogo, responsável pelo pagamento dos tentos.</p>
+                        </section>
+
+                        <section class="rule-section rule-item">
+                            <h4>Art. 5º e 6º - Indumentária e Desclassificação</h4>
+                            <p><strong>Art. 5º</strong> Os participantes deverão usar pilcha completa ou alternativa conforme diretrizes do MTG/CBTG.</p>
+                            <p><strong>Art. 6º</strong> Serão desclassificados os trios que: subirem em cadeiras/mesas; usarem palavrões; ingerirem bebidas alcoólicas durante as partidas; ou apresentarem sintomas de embriaguez.</p>
+                        </section>
+
+                        <section class="rule-section rule-item">
+                            <h4>Art. 8º e 9º - Baralho, Tentos e Formato</h4>
+                            <p><strong>I - BARALHO:</strong> Espanhol, 40 cartas (sem 8s e 9s).</p>
+                            <p><strong>II - TENTOS:</strong> Partidas jogadas em 24 tentos: os primeiros 12 são os "MALOS" (RUINS) e os 12 restantes os "BUENOS".</p>
+                            <p><strong>III - NÚMERO DE JOGADORES:</strong> 6 jogadores (3 contra 3). Alternam-se partidas de RODA (Mão Geral) e TESTA (1x1), até que faltem 6 tentos para o final da partida, onde todas as mãos seguintes serão de RODA.</p>
+                        </section>
+
+                        <section class="rule-section rule-item">
+                            <h4>Art. 9º (IV e V) - Distribuição e Jogo de Testa</h4>
+                            <p><strong>Corte:</strong> Corta o jogador à esquerda do pé. Não é admitido o "golpe" sem corte.</p>
+                            <p><strong>Jogo de Testa:</strong> Não é permitido passar senha ou mostrar cartas sem necessidade, sob pena de perder 1 tento. Só olha as cartas o jogador que estiver na sua vez de jogar.</p>
+                        </section>
+
+                        <section class="rule-section rule-item">
+                            <h4>Art. 9º (VIII) - Regras Gerais e Cartas Jogadas</h4>
+                            <p><strong>Passar as cartas:</strong> Se um grupo passar sem falar nada, o grupo contrário anota 2 tentos (1 do envido e 1 do truco). Se tiver flor, cobra 4 tentos.</p>
+                            <p><strong>Carta jogada:</strong> É aquela posta em sua totalidade sobre a mesa, não podendo ser retirada ou trocada.</p>
+                        </section>
+
+                        <section class="rule-section rule-item">
+                            <h4>Art. 9º (IX e X) - Regras da Flor e Penalidades</h4>
+                            <p><strong>A Flor:</strong> Formada por 3 cartas do mesmo naipe (vale 3 tentos). A chamada "Flor Paraguaia" (três 4s ou trios iguais) não tem valor.</p>
+                            <p><strong>Penalidade:</strong> Cantar FLOR sem possuí-la custa 4 tentos (3 da flor e 1 do truco) ao grupo infrator.</p>
+                        </section>
+
+                        <section class="rule-section rule-item">
+                            <h4>Art. 9º (XIV e XV) - Regulamento do Envido</h4>
+                            <p><strong>Envido Simples:</strong> Vale 2 tentos se querido, 1 se não querido.</p>
+                            <p><strong>Real Envido:</strong> Vale 3 tentos se querido, 1 se não querido.</p>
+                            <p><strong>Falta Envido:</strong> Se aceita no início da partida ou como revide, vale pelos tentos que faltam para o grupo ponteiro terminar a partida.</p>
+                        </section>
+
+                        <section class="rule-section rule-item">
+                            <h4>Art. 9º (XVI) - Regulamento do Truco e Vaza Empatada</h4>
+                            <p><strong>Divisão:</strong> TRUCO (vale 2 tentos), RETRUCO (vale 3 tentos), VALE QUATRO (vale 4 tentos).</p>
+                            <p><strong>Vaza Empatada (Emparde):</strong></p>
+                            <ul>
+                                <li>Empatando a 1ª vaza: ganha quem fizer a 2ª.</li>
+                                <li>Empatando 1ª e 2ª vazas: ganha quem fizer a 3ª.</li>
+                                <li>Empatando a 3ª vaza: ganha quem fez a 1ª.</li>
+                                <li>Empatando as três vazas: ganha o jogador que for MÃO.</li>
+                            </ul>
+                        </section>
+
+                        <section class="rule-section rule-item">
+                            <h4>Art. 9º (XVI - a) - A Lei do Jogo</h4>
+                            <p>Fórmula extrema antes de distribuir as cartas. Formulação equivalente a: <em>"FALTA ENVIDO E TRUCO E SE HOUVER FLOR, CONTRA FLOR E O RESTO"</em>.</p>
+                        </section>
                     </div>
                 </div>
             </div>
